@@ -147,6 +147,13 @@ public class DonneesGrille{
 		return nvTab;
 	}
 	
+	/*
+	 * Clear all cellules
+	 */
+	public void clear() {
+		tab = new boolean[tab.length][tab[0].length];
+		jeu.provoquerUpdate();
+	}
 	
 	
 	

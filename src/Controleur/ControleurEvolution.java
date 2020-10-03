@@ -41,6 +41,9 @@ public class ControleurEvolution implements ActionListener, ChangeListener {
 			
 			jeu.automate.evoAuto.interrupt();
 		}
+		if(e.getSource().equals(pan.boutonClear)) {
+			jeu.donneesGrille.clear();
+		}
 	}
 
 	@Override

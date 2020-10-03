@@ -15,7 +15,7 @@ public class Launcher {
 		vg.afficherQuadrillage(true);
 		vg.setEpaisseurQuadrillage(1);
 		*/
-		JFrame frame = new JFrame();
+		JFrame frame = new JFrame("AutoMaton");
 		PanPrincipale pp = new PanPrincipale();
 		Jeu jeu = new Jeu(pp);
 		pp.donnerJeu(jeu);

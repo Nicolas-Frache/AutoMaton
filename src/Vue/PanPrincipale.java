@@ -134,6 +134,10 @@ public class PanPrincipale extends JPanel implements Observer{
 	public JPanel zoneGen;
 	public JLabel genLbl;
 	public JLabel genNumLbl;
+	public JPanel zoneConfig;
+	public JLabel evoConfigEtiquette;
+	public JPanel zoneClear;
+	public JButton boutonClear;
 	
 	/****************************************/
 	
@@ -459,6 +463,21 @@ public class PanPrincipale extends JPanel implements Observer{
 		spinnerEvoVitesse.setPreferredSize(new Dimension(40, 20));
 		zoneReglageVitesse.add(spinnerEvoVitesse);
 		
+		zoneConfig = new JPanel();
+		Evo.add(zoneConfig);
+		zoneConfig.setLayout(new BorderLayout(0, 0));
+		
+		evoConfigEtiquette = new JLabel("Configuration");
+		evoConfigEtiquette.setHorizontalAlignment(SwingConstants.CENTER);
+		evoConfigEtiquette.setFont(new Font("Tahoma", Font.BOLD, 14));
+		zoneConfig.add(evoConfigEtiquette, BorderLayout.NORTH);
+		
+		zoneClear = new JPanel();
+		zoneConfig.add(zoneClear, BorderLayout.SOUTH);
+		
+		boutonClear = new JButton("Clear");
+		zoneClear.add(boutonClear);
+		
 		
 		
 		
@@ -503,6 +522,7 @@ public class PanPrincipale extends JPanel implements Observer{
 		spinnerEvoVitesse.addChangeListener(contEvo);
 		
 		boutonPause.setEnabled(false);
+		boutonClear.addActionListener(contEvo);
 	}
 
 	@Override
