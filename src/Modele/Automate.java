@@ -6,7 +6,7 @@ public class Automate {
 
 	public PanPrincipale pan;
 	public Jeu jeu;
-	public EvolutionAuto evoAuto;
+	public EvolutionAuto evoAuto;                     
 	
 	public boolean modePreset;
 	public boolean[] tabNaissance;

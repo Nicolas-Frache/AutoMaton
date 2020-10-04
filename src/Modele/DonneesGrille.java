@@ -1,6 +1,7 @@
 package Modele;
 
 import java.awt.Color;
+import java.util.HashMap;
 
 import Vue.PanPrincipale;
 
@@ -152,6 +153,27 @@ public class DonneesGrille{
 	 */
 	public void clear() {
 		tab = new boolean[tab.length][tab[0].length];
+		generation = 0;
+		jeu.provoquerUpdate();
+	}
+	
+	public void appliquerPresets(String nomPreset) {
+		clear();
+		HashMap<String, boolean[][]> presets = Presets.getInstance().getPresets();
+		if(presets.containsKey(nomPreset)) {
+			boolean[][] pres = presets.get(nomPreset);
+			System.out.println("preset");
+		
+			int debutX = (tab.length/2) - (pres[0].length/2);
+			int debutY = (tab[0].length/2) - (pres.length/2);
+			
+			for(int i=0; i<pres[0].length; i++) {
+				for(int j=0; j<pres.length; j++) {
+					tab[i+debutX][j+debutY] = pres[j][i];
+				}
+			}
+		}
+		generation = 0;
 		jeu.provoquerUpdate();
 	}
 	

@@ -44,6 +44,11 @@ public class ControleurEvolution implements ActionListener, ChangeListener {
 		if(e.getSource().equals(pan.boutonClear)) {
 			jeu.donneesGrille.clear();
 		}
+		if(e.getSource().equals(pan.listePresetsGrille)) {
+			String nomPreset = (String) pan.listePresetsGrille.getSelectedItem();
+			System.out.println(nomPreset);
+			jeu.donneesGrille.appliquerPresets(nomPreset);
+		}
 	}
 
 	@Override

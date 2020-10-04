@@ -27,11 +27,13 @@ import Controleur.ControleurEvolution;
 import Controleur.ControleurReglageAffichage;
 import Modele.Automate;
 import Modele.Jeu;
+import Modele.Presets;
 
 import javax.swing.JSplitPane;
 import javax.swing.JTabbedPane;
 import javax.swing.border.EtchedBorder;
 import javax.swing.border.EmptyBorder;
+import javax.swing.ComboBoxModel;
 
 public class PanPrincipale extends JPanel implements Observer{
 	
@@ -138,6 +140,8 @@ public class PanPrincipale extends JPanel implements Observer{
 	public JLabel evoConfigEtiquette;
 	public JPanel zoneClear;
 	public JButton boutonClear;
+	public JComboBox listePresetsGrille;
+	public JLabel choisirGrillePresetEtiquette;
 	
 	/****************************************/
 	
@@ -464,6 +468,7 @@ public class PanPrincipale extends JPanel implements Observer{
 		zoneReglageVitesse.add(spinnerEvoVitesse);
 		
 		zoneConfig = new JPanel();
+		zoneConfig.setBorder(UIManager.getBorder("TitledBorder.border"));
 		Evo.add(zoneConfig);
 		zoneConfig.setLayout(new BorderLayout(0, 0));
 		
@@ -476,7 +481,16 @@ public class PanPrincipale extends JPanel implements Observer{
 		zoneConfig.add(zoneClear, BorderLayout.SOUTH);
 		
 		boutonClear = new JButton("Clear");
+		boutonClear.setToolTipText("Effacer l'ensemble des cellules vivantes");
 		zoneClear.add(boutonClear);
+		
+		choisirGrillePresetEtiquette = new JLabel("Preset de simulation : ");
+		zoneClear.add(choisirGrillePresetEtiquette);
+		
+		String[] tabPresetsGrille = new String[0];
+		DefaultComboBoxModel<String> comboModel2 = new DefaultComboBoxModel<String>((String[]) Presets.getPresets().keySet().toArray(tabPresetsGrille));
+		listePresetsGrille = new JComboBox(comboModel2);
+		zoneClear.add(listePresetsGrille);
 		
 		
 		
@@ -523,6 +537,9 @@ public class PanPrincipale extends JPanel implements Observer{
 		
 		boutonPause.setEnabled(false);
 		boutonClear.addActionListener(contEvo);
+		
+		listePresetsGrille.addActionListener(contEvo);
+		
 	}
 
 	@Override
